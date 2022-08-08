@@ -14,8 +14,8 @@ Possible examples include:
   *	Java 8
     * Scanner (Console inputs)
     * JDBC (Database Connectivity)
-    * JUnit (Unit Testing)
-    * Logback (Logging)
+    * JUnit (Unit Testing) //removed
+    * Logback (Logging)  //removed
   * PostgreSQL
   * Maven (Dependency Management)
 *	Functionalities: 
@@ -32,7 +32,7 @@ Possible examples include:
     * Must contain at least three entity tables. (Join tables do not count.) 
     * Must contain at least two relationships between tables. 
       * Stretch Goal: Create a Many to Many relationship between tables. 
-    * Must contain at least one trigger. 
+    * Must contain at least one trigger. //optional
   * Three layered architecture of the Java application.
     * Reasonable test coverage of the service layer. 
       * Stretch Goal: Implement Test Driven Development.
