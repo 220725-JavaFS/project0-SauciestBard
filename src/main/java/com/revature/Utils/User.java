@@ -33,7 +33,7 @@ public class User {
 		return accountType;
 	}
 
-	public void setAccountType(String newAccountType) {
+	public static void setAccountType(String newAccountType) {
 		newAccountType = accountType;
 	}
 

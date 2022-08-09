@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class MenuController {
 
 	private Scanner scan = new Scanner(System.in);
-	private AccountService accountServ = new AccountService();
 	private ChatService chatServ = new ChatService();
 	private LogInService loginServ = new LogInService();
 	
@@ -112,7 +111,7 @@ public class MenuController {
 		while(!userExists) {
 			System.out.print("Enter the username of the user to ban: ");
 			input = scan.nextLine();
-			userExists = accountServ.checkUsernameExists(input);
+			userExists = AccountService.checkUsernameExists(input);
 			if(!userExists) {
 				System.out.println("User does not exist");
 			}else {
@@ -164,7 +163,7 @@ public class MenuController {
 			}
 		}
 		
-		accountServ.ban(username, banReason, banType, daysToRelease, hoursToRelease);
+		AccountService.ban(username, banReason, banType, daysToRelease, hoursToRelease);
 		return;
 	}
 	
@@ -177,7 +176,7 @@ public class MenuController {
 		while(!userExists) {
 			System.out.print("Enter the username of the user to ban: ");
 			input = scan.nextLine();
-			userExists = accountServ.checkUsernameExists(input);
+			userExists = AccountService.checkUsernameExists(input);
 			if(!userExists) {
 				System.out.println("User does not exist");
 			}else {
@@ -185,7 +184,7 @@ public class MenuController {
 			}
 		}
 		
-		accountServ.addMod(username);
+		AccountService.addMod(username);
 		return;
 	}
 }
