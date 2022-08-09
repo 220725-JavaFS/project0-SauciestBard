@@ -1,5 +1,10 @@
 package com.revature.service;
 
-public class LogInService {
+import com.revature.Utils.*;
 
+public class LogInService {
+	public boolean tryLogin(String username, String password) {
+		User.setLoggedIn(true);
+		return true;
+	}
 }

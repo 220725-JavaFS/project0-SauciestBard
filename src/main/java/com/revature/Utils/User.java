@@ -16,23 +16,35 @@ public class User {
 	
 	
 	
-	private String username;
-	private String accountType;
+	private static String username;
+	private static String accountType;
+	private static boolean loggedIn = false;
 	
 	
-	public String getUsername() {
+	public static String getUsername() {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public static void setUsername(String newUsername) {
+		newUsername = username;
 	}
 
-	public String getAccountType() {
+	public static String getAccountType() {
 		return accountType;
 	}
 
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
+	public void setAccountType(String newAccountType) {
+		newAccountType = accountType;
 	}
+
+	public static boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public static void setLoggedIn(boolean loggedIn) {
+		User.loggedIn = loggedIn;
+	}
+	
+	
+	
 }
