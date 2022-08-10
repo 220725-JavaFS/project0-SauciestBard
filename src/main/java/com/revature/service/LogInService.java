@@ -10,8 +10,6 @@ public class LogInService {
 	public boolean tryLogin(String username, String password) {
 		if(!AccountService.checkUsernameExists(username)) {
 			return false;
-		}else {
-			System.out.println("User found");
 		}
 		
 		String passwordHash = hashPassword(password);

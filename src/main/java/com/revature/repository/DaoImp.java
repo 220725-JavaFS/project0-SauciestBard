@@ -66,7 +66,6 @@ public class DaoImp implements Dao {
 		try(Connection conn = ConnectionUtil.getConnection()){
 			String sql = "INSERT INTO messages(sender_id, sent, message) VALUES (?,?,?);";
 			PreparedStatement statement = conn.prepareStatement(sql);
-			System.out.println(username);
 			statement.setString(1, username);
 			statement.setTimestamp(2,new java.sql.Timestamp(System.currentTimeMillis()));
 			statement.setString(3, message);
