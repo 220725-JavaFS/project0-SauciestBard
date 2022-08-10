@@ -146,7 +146,7 @@ public class MenuController {
 			}
 		}
 		
-		System.out.print("Enter the reason for the ban");
+		System.out.print("Enter the reason for the ban: ");
 		banReason = scan.nextLine();
 		
 		while(banType == -1) {
