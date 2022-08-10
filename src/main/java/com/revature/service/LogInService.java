@@ -10,13 +10,15 @@ public class LogInService {
 	public boolean tryLogin(String username, String password) {
 		if(!AccountService.checkUsernameExists(username)) {
 			return false;
+		}else {
+			System.out.println("User found");
 		}
 		
 		String passwordHash = hashPassword(password);
 		
 		String expectedHash = dao.getPassHash(username);
 		
-		if(passwordHash != expectedHash) {
+		if(!passwordHash.equals(expectedHash)) {
 			return false;
 		}
 		User.setUsername(username);
@@ -24,6 +26,12 @@ public class LogInService {
 		
 		User.setLoggedIn(true);
 		return true;
+	}
+	
+	public void newUser(String username, String password) {
+		dao.addUser(username, hashPassword(password), 0);
+		tryLogin(username,password);
+		return;
 	}
 	
 	

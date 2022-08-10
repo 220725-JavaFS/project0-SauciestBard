@@ -18,6 +18,8 @@ public interface Dao {
 	
 	public void addBan(String bannedUser, String banningMod, String banReason, int banState, Date releaseDate);
 	
-	public void setAccountType(String username, String newUserRole);
+	public void makeMod(String username);
+	
+	public void addUser(String username, String passHash, int accountType);
 
 }

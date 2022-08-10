@@ -2,12 +2,6 @@ package com.revature.Utils;
 
 public class User {
 	
-	public User(){
-		super();
-		username = null;
-		accountType = null;
-	}
-	
 	public User(String newUsername, String newAccountType){
 		super();
 		username = newUsername;
@@ -18,7 +12,7 @@ public class User {
 	
 	private static String username;
 	private static String accountType;
-	private static boolean loggedIn = false;
+	private static boolean loggedIn;
 	
 	
 	public static String getUsername() {
@@ -26,7 +20,7 @@ public class User {
 	}
 
 	public static void setUsername(String newUsername) {
-		newUsername = username;
+		username = newUsername;
 	}
 
 	public static String getAccountType() {
@@ -34,7 +28,7 @@ public class User {
 	}
 
 	public static void setAccountType(String newAccountType) {
-		newAccountType = accountType;
+		accountType = newAccountType;
 	}
 
 	public static boolean isLoggedIn() {

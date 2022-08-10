@@ -23,7 +23,7 @@ public class AccountService {
 	
 	public static void addMod(String username) {
 		if(dao.userExists(username)) {
-			dao.setAccountType(username, "moderator");
+			dao.makeMod(username);
 		}
 		return;
 	}

@@ -17,18 +17,19 @@ public class MenuController {
 	
 
 	public void runMenu() {
+		User.setLoggedIn(false);
 		System.out.println("Welcome to the chat system");
 		while(!exit) {
 			if(!User.isLoggedIn()) {
 				System.out.println("1: Login");
-				//Add new use functions here if time
+				System.out.println("2: New User");
 			}else {
 				System.out.println("1: Send Message");
 				System.out.println("2: View Messages");
-				if(User.getAccountType() == "moderator" || User.getAccountType() == "admin") {
+				if(User.getAccountType().equals("moderator")|| User.getAccountType().equals("admin")) {
 					System.out.println("3: Ban User");
 				}
-				if(User.getAccountType() == "admin") {
+				if(User.getAccountType().equals("admin")) {
 					System.out.println("4: Add moderator");
 				}
 			}
@@ -54,7 +55,7 @@ public class MenuController {
 				if(User.isLoggedIn()) {
 					System.out.print("\n\n\n" + chatServ.getChatLog() + "\n\n\n");
 				}else {
-					System.out.print("Input not valid\n\n\n");
+					newUser();
 				}
 				break;
 			case "3":
@@ -65,7 +66,7 @@ public class MenuController {
 				}
 				break;
 			case "4":
-				if(User.isLoggedIn() && User.getAccountType() == "admin") {
+				if(User.isLoggedIn() && User.getAccountType().equals("admin")) {
 					addModMenu();
 				}else {
 					System.out.print("Input not valid\n\n\n");
@@ -93,6 +94,32 @@ public class MenuController {
 			if(!loginServ.tryLogin(username, password)) {
 				System.out.println("Login failed");
 			}
+			
+		}
+		return;
+	}
+	
+	private void newUser() {
+		String username;
+		String password;
+		boolean username_valid = false;
+		
+		while(!User.isLoggedIn()) {
+			do {
+				System.out.print("Username: ");
+				username = scan.nextLine();
+				username_valid = !AccountService.checkUsernameExists(username);
+				if(!username_valid) {
+					System.out.println("Username taken");
+				}
+			}while(!username_valid);
+			
+			System.out.print("Password: ");
+			password = scan.nextLine();
+			
+			loginServ.newUser(username, password);
+			//loginServ.tryLogin(username, password);
+			
 			
 		}
 		return;
@@ -135,25 +162,25 @@ public class MenuController {
 			
 			switch (input){
 				case "0":
-					banType = 1;
+					banType = 2;
 					break;
 				case "1":
-					banType = 2;
+					banType = 1;
 					daysToRelease = 0;
 					hoursToRelease = 1;
 					break;
 				case "2":
-					banType = 2;
+					banType = 1;
 					daysToRelease = 1;
 					hoursToRelease = 0;
 					break;
 				case "3":
-					banType = 2;
+					banType = 1;
 					daysToRelease = 7;
 					hoursToRelease = 0;
 					break;
 				case "4":
-					banType = 2;
+					banType = 1;
 					daysToRelease = 30;
 					hoursToRelease = 0;
 					break;
@@ -174,7 +201,7 @@ public class MenuController {
 		String username = "";
 		
 		while(!userExists) {
-			System.out.print("Enter the username of the user to ban: ");
+			System.out.print("Enter the username of the user to make a mod: ");
 			input = scan.nextLine();
 			userExists = AccountService.checkUsernameExists(input);
 			if(!userExists) {
